@@ -22,15 +22,11 @@ export class NodeMailerAdapter implements EmailSender {
 
   async sendEmail(to: string, subject: string, html: string): Promise<void> {
     this.logger.log(`sending message to ${to}`);
-    try {
-      await this.transporter.sendMail({
-        from: this.configService.get<string>('EMAIL_FROM'),
-        to,
-        subject,
-        html,
-      });
-    } catch (e) {
-      this.logger.error(e);
-    }
+    await this.transporter.sendMail({
+      from: this.configService.get<string>('EMAIL_FROM'),
+      to,
+      subject,
+      html,
+    });
   }
 }
