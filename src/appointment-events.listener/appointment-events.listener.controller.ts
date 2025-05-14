@@ -24,7 +24,7 @@ export class AppointmentEventsListener implements OnModuleInit {
     );
   }
 
-  @EventPattern('appointment.scheduled')
+  @EventPattern('appointment.created')
   async handleAppointmentScheduled(
     @Payload() data: CreateAppointmentInputDto,
     @Ctx() context: RmqContext,
